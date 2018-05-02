@@ -6,7 +6,7 @@ Plugin is written in jQuery.
 Include fs-gal.css, a recent jQuery and jQuery Mobile version and fs-gal.js on your webpage.
 Create objects (div, img, a, ...) with class 'fs-gal' and data-attribute 'data-url'.
 The data-attribute 'data-url' is used to identify the image to open in the full screen gallery whend clicked. Please note that this uri may not include spaces.
-When provided, the alt or title attribute is used to display the title of the image on the bottom of the gallery.
+When provided, the title attribute is used to display the title of the image on the bottom of the gallery.
 Somwhere between the body tags, include the following snippet:
 ```html
 <div class="fs-gal-view">
@@ -18,4 +18,4 @@ Somwhere between the body tags, include the following snippet:
 ```
 
 # Navigation
-Visitors can click on objects with the fs-gal class to open the full screen gallery. Users can click on the previous and next icon or use the left and right arrow keys to navigate between images. The close button on top of the page or the ESC key is used to close the gallery.
+Visitors can click on objects with the fs-gal class to open the full screen gallery. Users can click on the previous and next icon or use the left and right arrow keys to navigate between images. Swiping left and right is also supported. The close button on top of the page or the ESC key is used to close the gallery.

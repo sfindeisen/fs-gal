@@ -3,12 +3,20 @@
  * Licence: Free for commercial use
  * Last update: 2nd May 2018 - v1.2.3
  */
+var fs_gal_preloads = new Array();
 $('document').ready(function() {
+
+  // Set gallery to flex
+  $('.fs-gal-view').css("display", "flex")
+                   .hide();
 
   // Make gallery objects clickable
   $('.fs-gal').click(function() {
     fsGal_DisplayImage($(this));
   });
+
+  // Preload the very first image
+  preloadImage($('.fs-gal')[0].dataset.url);
 
   // Display gallery
   function fsGal_DisplayImage(obj) {
@@ -18,13 +26,15 @@ $('document').ready(function() {
     $('.fs-gal-view > .fs-gal-next').fadeOut();
 
     // Set current image
-    var title = obj.attr('alt');
-    if (!title || title == '') { title = obj.attr('title'); }
+    title = obj.attr('title');
+    alt = obj.attr('alt');
+    imgElem = $('.fs-gal-main');
+    imgElem.attr('title', title);
+    imgElem.attr('alt', alt);
+    imgElem.attr('src', obj.attr('data-url'));
     $('.fs-gal-view > h1').text(title);
     if (!title || title == '') { $('.fs-gal-view > h1').fadeOut(); }
     else { $('.fs-gal-view > h1').fadeIn(); }
-    var img = obj.attr('data-url');
-    $('.fs-gal-view').css('background-image', 'url('+img+')');
 
     // Create buttons
     var current = $('.fs-gal').index(obj);
@@ -47,18 +57,48 @@ $('document').ready(function() {
         $('.fs-gal-view > .fs-gal-prev').attr('data-img-index', $('.fs-gal').length - 1);
         $('.fs-gal-view > .fs-gal-next').fadeIn();
     }
+
+    // preload next images
+    preloadNextAndPrev();
+    
+  }
+
+  // Preload next and previous image
+  function preloadNextAndPrev() {
+    fs_gal_preloads = new Array();
+    // previous
+    index = $('.fs-gal-view > .fs-gal-prev').attr('data-img-index');
+    elem = $($('.fs-gal').get(index));
+    img = elem.attr('data-url');
+    preloadImage(img);
+    // next
+    index = $('.fs-gal-view > .fs-gal-next').attr('data-img-index');
+    elem = $($('.fs-gal').get(index));
+    img = elem.attr('data-url');
+    preloadImage(img);
+  }
+
+  // Preload an image
+  function preloadImage(source) {
+    var preload = (new Image());
+    preload.src = source
+    fs_gal_preloads.push(preload);
   }
 
   // Gallery navigation
-  $('.fs-gal-view .fs-gal-nav').click(function() {
+  $('.fs-gal-view .fs-gal-nav').click(function(e) {
+    e.stopPropagation();
     var index = $(this).attr('data-img-index');
     var img = $($('.fs-gal').get(index));
     fsGal_DisplayImage(img);
   });
 
   // Close gallery
-  $('.fs-gal-view .fs-gal-close').click(function() {
+  $('.fs-gal-view').click(function(e) {
     $('.fs-gal-view').fadeOut();
+  });
+  $('.fs-gal-main').click(function(e) {
+      e.stopPropagation();
   });
 
   // Keyboard navigation
@@ -86,8 +126,5 @@ $('document').ready(function() {
   $('.fs-gal-view').on('swipeup', function() {
     $('.fs-gal-view .fs-gal-close').click(); // Close gallery
   });
-
-  ///TODO
-  ///Preload images
 
 });

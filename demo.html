@@ -1,59 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Free Full Screen Photo Gallery</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="author" content="Tim Vervoort" />
-    <meta name="copyright" content="Party Locator" />
-    <meta name="generator" content="Tim Vervoort" />
-    <link rel="dns-prefetch" href="https://code.jquery.com" />
-    <link rel="stylesheet" type="text/css" href="css/fs-gal.css?v2" />
-    <style type="text/css">
-      /* For demo only */
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-      }
-      h1, h2 {
-        max-width: 80%;
-        font-size: 300;
-      }
-      .fs-gal {
-        width: 100px;
-        height: auto;
-        float: left;
-      }
-    </style>
-  </head>
-  <body>
+    <head>
+      <title>Free Full Screen Photo Gallery</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <meta name="author" content="Tim Vervoort" />
+      <meta name="copyright" content="Tim Vervoort" />
+      <meta name="generator" content="Tim Vervoort" />
+      <link rel="dns-prefetch" href="https://code.jquery.com" />
+      <link rel="stylesheet" type="text/css" href="css/fs-gal.css" />
+      <style type="text/css">
+          /* For demo only */
+          html, body {
+              margin: 0;
+              padding: 0;
+              height: 100%;
+              width: 100%;
+              text-align: center;
+          }
+          .fs-gal {
+              width: 25%;
+              height: auto;
+              float: left;
+          }
+      </style>
+    </head>
+    <body>
 
-    <!-- Create objects with class 'fs-gal' and include the data-attribute 'data-url' with the relative or absolute path which is to be displayed. -->
-    <!-- <img class="fs-gal" src="img/example1.jpg" alt="Example Image 1" data-url="img/example1.jpg" />
-    <img class="fs-gal" src="img/example2.jpg" title="Example Image 2" data-url="img/example2.jpg" />
-    <img class="fs-gal" src="img/eiffel.jpg" data-url="img/eiffel.jpg" />
-    <img class="fs-gal" src="img/panorama.jpg" data-url="img/panorama.jpg" /> -->
-    <img class="fs-gal" src="img/example1.jpg" alt="Example Image 1" data-url="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1701&w=2633" />
-    <img class="fs-gal" src="img/example2.jpg" title="Example Image 2" data-url="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1701&w=2633" />
-    <img class="fs-gal" src="img/eiffel.jpg" data-url="img/eiffel.jpg" />
-    <img class="fs-gal" src="img/panorama.jpg" data-url="img/panorama.jpg" />
+        <!-- Create objects with class 'fs-gal' and include the attribute 'data-url' with the relative or absolute path which is to be displayed. -->
+        <img class="fs-gal" src="img/example1.jpg" alt="Example Image 1" data-url="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1701&w=2633" /><!-- Alt tags can be used to display info in the gallery viewer. -->
+        <img class="fs-gal" src="img/example2.jpg" title="Example Image 2" data-url="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1701&w=2633" /><!-- The title tag can be used as well. -->
+        <img class="fs-gal" src="img/example1.jpg" data-url="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1701&w=2633" />
+        <img class="fs-gal" src="img/example2.jpg" data-url="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1701&w=2633" />
 
-    <!-- Full screen gallery -->
-    <div class="fs-gal-view">
-      <h1></h1>
-      <img class="fs-gal-prev fs-gal-nav" src="img/prev.svg" alt="Previous picture" title="Previous picture" />
-      <img class="fs-gal-next fs-gal-nav" src="img/next.svg" alt="Next picture" title="Next picture" />
-      <img class="fs-gal-close" src="img/close.svg" alt="Close gallery" title="Close gallery" />
-      <img class="fs-gal-main" src="" alt="">
-    </div>
+        <!-- Full screen gallery. -->
+        <div class="fs-gal-view">
+            <h1></h1>
+            <img class="fs-gal-prev fs-gal-nav" src="img/prev.svg" alt="Previous picture" title="Previous picture" />
+            <img class="fs-gal-next fs-gal-nav" src="img/next.svg" alt="Next picture" title="Next picture" />
+            <img class="fs-gal-close" src="img/close.svg" alt="Close gallery" title="Close gallery" />
+            <img class="fs-gal-main" src="" alt="" />
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
-    <script type="text/javascript" src="js/fs-gal.js?v2"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/fs-gal.js"></script>
 
-  </body>
+    </body>
 </html>

@@ -1,7 +1,7 @@
 /**
  * Author: Tim Vervoort - info@timvervoort.com
  * Licence: Free for commercial use
- * Last update: 14th December 2018 - v1.3
+ * Last update: 23rd December 2018 - v1.3.1
  */
 
 var fsGal_preloads = new Array();
@@ -78,12 +78,19 @@ $('document').ready(function() {
       fsGal_preloads.push(preload);
     }
 
+    // Check if the image viewer is displayed
+    function isViewerOpen() {
+        return $('.fs-gal-view').css('display') !== 'none'; // Can be block, flex...
+    }
+
     // Gallery navigation
     $('.fs-gal-view .fs-gal-nav').click(function(e) {
         e.stopPropagation();
-        var index = $(this).attr('data-img-index');
-        var img = $($('.fs-gal').get(index));
-        fsGal_DisplayImage(img);
+        if (isViewerOpen()) {
+            var index = $(this).attr('data-img-index');
+            var img = $($('.fs-gal').get(index));
+            fsGal_DisplayImage(img);
+        }        
     });
 
     // Close gallery

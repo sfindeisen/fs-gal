@@ -1,7 +1,7 @@
 /**
  * Author: Tim Vervoort - info@timvervoort.com
  * Licence: Free for commercial use
- * Last update: 23rd December 2018 - v1.3.1
+ * Last update: 12th January 2019 - v1.3.2
  */
 
 var fsGal_preloads = new Array();
@@ -15,7 +15,9 @@ $('document').ready(function() {
         fsGal_DisplayImage($(e.currentTarget));
     });
   
-    preloadImage($('.fs-gal')[0].dataset.url); // Preload the very first image
+    if ($('.fs-gal')[0]) {
+        preloadImage($('.fs-gal')[0].dataset.url); // Preload the very first image, if it exists
+    }
 
     // Display gallery
     function fsGal_DisplayImage(obj) {

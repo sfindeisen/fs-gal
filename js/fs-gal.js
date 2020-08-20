@@ -6,7 +6,7 @@
 
 var fsGal_preloads = new Array();
 
-$('document').ready(function() {
+$(document).ready(function() {
 
     $('.fs-gal-view').css('display', 'flex').hide();
 

@@ -6,82 +6,82 @@
 
 var fsGal_preloads = new Array();
 
-    // Display gallery
-    function fsGal_DisplayImage(obj) {
+// Display gallery
+function fsGal_DisplayImage(obj) {
 
-        // Set current image
-        title = obj.attr('title');
-        alt = obj.attr('alt');
-        // if (!title) { title = alt; }
-        imgElem = $('.fs-gal-main');
-        imgElem.attr('title', title);
-        imgElem.attr('alt', alt);
-        imgElem.attr('src', obj.attr('data-url'));
-        $('.fs-gal-view > h1').text(title);
-        if (!title || title == '') { $('.fs-gal-view > h1').fadeOut(); }
-        else { $('.fs-gal-view > h1').fadeIn(); }
+    // Set current image
+    title = obj.attr('title');
+    alt = obj.attr('alt');
+    // if (!title) { title = alt; }
+    imgElem = $('.fs-gal-main');
+    imgElem.attr('title', title);
+    imgElem.attr('alt', alt);
+    imgElem.attr('src', obj.attr('data-url'));
+    $('.fs-gal-view > h1').text(title);
+    if (!title || title == '') { $('.fs-gal-view > h1').fadeOut(); }
+    else { $('.fs-gal-view > h1').fadeIn(); }
 
-        // Create buttons
-        var current = $('.fs-gal').index(obj);
-        var prev = current - 1;
-        var next = current + 1;
-        if (prev >= 0) {
-            $('.fs-gal-view > .fs-gal-prev').attr('data-img-index', prev);
-        }
-        if (next < $('.fs-gal').length) {
-            $('.fs-gal-view > .fs-gal-next').attr('data-img-index', next);
-        }
-        $('.fs-gal-view').fadeIn(); // Display gallery
+    // Create buttons
+    var current = $('.fs-gal').index(obj);
+    var prev = current - 1;
+    var next = current + 1;
+    if (prev >= 0) {
+        $('.fs-gal-view > .fs-gal-prev').attr('data-img-index', prev);
+    }
+    if (next < $('.fs-gal').length) {
+        $('.fs-gal-view > .fs-gal-next').attr('data-img-index', next);
+    }
+    $('.fs-gal-view').fadeIn(); // Display gallery
 
-        // Wrap gallery
-        if (current == $('.fs-gal').length - 1)  { // Last image
-            $('.fs-gal-view > .fs-gal-next').attr('data-img-index', 0);
-        }
-        else if (current == 0)  { // Last image
-            $('.fs-gal-view > .fs-gal-prev').attr('data-img-index', $('.fs-gal').length - 1);
-        }
-      
-        preloadNextAndPrev(); // Preload next images
-
+    // Wrap gallery
+    if (current == $('.fs-gal').length - 1)  { // Last image
+        $('.fs-gal-view > .fs-gal-next').attr('data-img-index', 0);
+    }
+    else if (current == 0)  { // Last image
+        $('.fs-gal-view > .fs-gal-prev').attr('data-img-index', $('.fs-gal').length - 1);
     }
 
-    // Preload next and previous image
-    function preloadNextAndPrev() {
-        fsGal_preloads = new Array();
-        // Previous
-        index = $('.fs-gal-view > .fs-gal-prev').attr('data-img-index');
-        elem = $($('.fs-gal').get(index));
-        img = elem.attr('data-url');
-        preloadImage(img);
-        // Next
-        index = $('.fs-gal-view > .fs-gal-next').attr('data-img-index');
-        elem = $($('.fs-gal').get(index));
-        img = elem.attr('data-url');
-        preloadImage(img);
-    }
+    preloadNextAndPrev(); // Preload next images
 
-    // Preload an image
-    function preloadImage(source) {
-      var preload = (new Image());
-      preload.src = source
-      fsGal_preloads.push(preload);
-    }
+}
 
-    // Check if the image viewer is displayed
-    function isViewerOpen() {
-        return $('.fs-gal-view').css('display') !== 'none'; // Can be block, flex...
-    }
+// Preload next and previous image
+function preloadNextAndPrev() {
+    fsGal_preloads = new Array();
+    // Previous
+    index = $('.fs-gal-view > .fs-gal-prev').attr('data-img-index');
+    elem = $($('.fs-gal').get(index));
+    img = elem.attr('data-url');
+    preloadImage(img);
+    // Next
+    index = $('.fs-gal-view > .fs-gal-next').attr('data-img-index');
+    elem = $($('.fs-gal').get(index));
+    img = elem.attr('data-url');
+    preloadImage(img);
+}
+
+// Preload an image
+function preloadImage(source) {
+  var preload = (new Image());
+  preload.src = source
+  fsGal_preloads.push(preload);
+}
+
+// Check if the image viewer is displayed
+function isViewerOpen() {
+    return $('.fs-gal-view').css('display') !== 'none'; // Can be block, flex...
+}
 
 
-    // Deterimine touch gesture direction
-    function handleGesture() {
-        if (touchendX <= touchstartX) { // Slide to left, go to next image
-            $('.fs-gal-view .fs-gal-next').click();
-        }
-        if (touchendX >= touchstartX) { // Slide to right, go to previous image
-            $('.fs-gal-view .fs-gal-prev').click();
-        }
+// Deterimine touch gesture direction
+function handleGesture() {
+    if (touchendX <= touchstartX) { // Slide to left, go to next image
+        $('.fs-gal-view .fs-gal-next').click();
     }
+    if (touchendX >= touchstartX) { // Slide to right, go to previous image
+        $('.fs-gal-view .fs-gal-prev').click();
+    }
+}
 
 $(document).ready(function() {
 

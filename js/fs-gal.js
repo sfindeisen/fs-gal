@@ -6,19 +6,6 @@
 
 var fsGal_preloads = new Array();
 
-$(document).ready(function() {
-
-    $('.fs-gal-view').css('display', 'flex').hide();
-
-    // Make gallery objects clickable, also dynamic added objects
-    $('body').on('click', '.fs-gal', function(e) {
-        fsGal_DisplayImage($(e.currentTarget));
-    });
-  
-    if ($('.fs-gal')[0]) {
-        preloadImage($('.fs-gal')[0].dataset.url); // Preload the very first image, if it exists
-    }
-
     // Display gallery
     function fsGal_DisplayImage(obj) {
 
@@ -85,6 +72,30 @@ $(document).ready(function() {
         return $('.fs-gal-view').css('display') !== 'none'; // Can be block, flex...
     }
 
+
+    // Deterimine touch gesture direction
+    function handleGesture() {
+        if (touchendX <= touchstartX) { // Slide to left, go to next image
+            $('.fs-gal-view .fs-gal-next').click();
+        }
+        if (touchendX >= touchstartX) { // Slide to right, go to previous image
+            $('.fs-gal-view .fs-gal-prev').click();
+        }
+    }
+
+$(document).ready(function() {
+
+    $('.fs-gal-view').css('display', 'flex').hide();
+
+    // Make gallery objects clickable, also dynamic added objects
+    $('body').on('click', '.fs-gal', function(e) {
+        fsGal_DisplayImage($(e.currentTarget));
+    });
+
+    if ($('.fs-gal')[0]) {
+        preloadImage($('.fs-gal')[0].dataset.url); // Preload the very first image, if it exists
+    }
+
     // Gallery navigation
     $('.fs-gal-view .fs-gal-nav').click(function(e) {
         e.stopPropagation();
@@ -141,15 +152,5 @@ $(document).ready(function() {
         touchendX = event.changedTouches[0].screenX;
         handleGesture();
     }, false); 
-
-    // Deterimine touch gesture direction
-    function handleGesture() {
-        if (touchendX <= touchstartX) { // Slide to left, go to next image
-            $('.fs-gal-view .fs-gal-next').click();
-        }
-        if (touchendX >= touchstartX) { // Slide to right, go to previous image
-            $('.fs-gal-view .fs-gal-prev').click();
-        }
-    }
 
 });

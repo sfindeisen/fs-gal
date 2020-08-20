@@ -25,7 +25,7 @@ $(document).ready(function() {
         // Set current image
         title = obj.attr('title');
         alt = obj.attr('alt');
-        if (!title) { title = alt; }
+        // if (!title) { title = alt; }
         imgElem = $('.fs-gal-main');
         imgElem.attr('title', title);
         imgElem.attr('alt', alt);

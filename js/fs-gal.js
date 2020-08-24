@@ -1,7 +1,7 @@
 /**
  * Author: Tim Vervoort - info@timvervoort.com
+ *         Stanislaw Findeisen
  * Licence: Free for commercial use
- * Last update: 12th January 2019 - v1.3.2
  */
 
 var fsGal_preloads = new Array();

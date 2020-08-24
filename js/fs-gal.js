@@ -17,9 +17,9 @@ function fsGal_DisplayImage(obj) {
     imgElem.attr('title', title);
     imgElem.attr('alt', alt);
     imgElem.attr('src', obj.attr('data-url'));
-    $('.fs-gal-view > h1').text(title);
-    if (!title || title == '') { $('.fs-gal-view > h1').fadeOut(); }
-    else { $('.fs-gal-view > h1').fadeIn(); }
+    $('.fs-gal-view > p').text(title);
+    if (!title || title == '') { $('.fs-gal-view > p').fadeOut(); }
+    else { $('.fs-gal-view > p').fadeIn(); }
 
     // Create buttons
     var current = $('.fs-gal').index(obj);

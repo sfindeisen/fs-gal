@@ -16,7 +16,7 @@
     text-align: center;
     background-size: contain;
     background-position: center center;
-    background-color: rgba(20, 20, 20, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     background-repeat: no-repeat;
     overflow: hidden;
     z-index: 999999;
@@ -24,22 +24,22 @@
     justify-content: center; 
     align-items: center;
 }
-.fs-gal-view h1 {
+.fs-gal-view p {
     position: absolute;
+    display: block;
     bottom: 0;
     left: 0;
     width: 100%;
     min-width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 0;
-    height: 50px;
-    line-height: 50px;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    font-weight: 300;
-    font-size: 26px;
+    color: white;
+    text-align: justify;
+    font-size: larger;
 }
 .fs-gal-prev, .fs-gal-next, .fs-gal-close {
     position: absolute;
